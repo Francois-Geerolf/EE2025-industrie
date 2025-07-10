@@ -1,8 +1,6 @@
-rm(list = ls())
 library(dplyr)
 library(eurostat)
 library(ggplot2)
-source("../../code/R-markdown/init_eurostat.R")
 load_data("eurostat/nama_10_a10.RData")
 load_data("eurostat/geo_fr.RData")
 
@@ -19,7 +17,7 @@ graphique1_data <- nama_10_a10 %>%
   spread(nace_r2, values) %>%
   transmute(date, Geo, values = C/TOTAL, values_B_E = `B-E`/TOTAL)
 
-write_csv2(graphique1_data, file = "graphiques/graphique1.csv")
+write_csv2(graphique1_data, file = "graphique1.csv")
 
 graphique1 <- graphique1_data %>%
   ggplot(.) + geom_line(aes(x = date, y = values, linetype = Geo)) + 
@@ -34,8 +32,8 @@ graphique1 <- graphique1_data %>%
                      labels = percent_format(accuracy = 1))
 
 graphique1
-save(graphique1, file = "graphiques/graphique1.RData")
-ggsave(graphique1, file = "graphiques/graphique1.pdf", bg = "white", width = 7, height = 4)
-ggsave(graphique1, file = "graphiques/graphique1.png", bg = "white", width = 7, height = 4)
-ggsave(graphique1, file = "graphiques/graphique1.svg", bg = "white", width = 7, height = 4)
+save(graphique1, file = "graphique1.RData")
+ggsave(graphique1, file = "graphique1.pdf", bg = "white", width = 7, height = 4)
+ggsave(graphique1, file = "graphique1.png", bg = "white", width = 7, height = 4)
+ggsave(graphique1, file = "graphique1.svg", bg = "white", width = 7, height = 4)
 

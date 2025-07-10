@@ -3,7 +3,6 @@ library(dplyr)
 library(eurostat)
 library(ggplot2)
 
-source("../../code/R-markdown/init_wdi.R")
 load_data("wdi/NV.IND.MANF.CD.RData")
 load_data("wdi/iso2c_long2.RData")
 load_data("macro.RData")
